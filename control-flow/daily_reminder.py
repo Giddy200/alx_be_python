@@ -1,4 +1,3 @@
-# This script helps manage a single daily task with a customized reminder.
 # Prompt the user for a task.
 task = input("What is the task for today? ")
 # Prompt for priority (high, medium, low).
