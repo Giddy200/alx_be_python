@@ -2,11 +2,8 @@
 
 # Prompt the user for a task.
 task = input("Enter your task: ").strip()
-priority = input("What is the priority of this task? (high/medium/low): ").lower()
-time_bound = input("Is this task time-bound? (yes/no): ").lower()
-
-# Initialize the reminder message.
-reminder = f"Reminder for your {priority} priority task: {task}."
+priority = input("What is the priority of this task? (high/medium/low): ").strip().lower()
+time_bound = input("Is this task time-bound? (yes/no): ").strip().lower()
 
 # Use a match-case statement to create the base reminder message.
 match priority:
