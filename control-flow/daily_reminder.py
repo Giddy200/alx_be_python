@@ -1,11 +1,11 @@
-# This script helps manage a single daily task with a customized reminder.
+# daily_reminder.py
 
-# Prompt the user for a task.
+# Prompt the user for a single task, its priority, and if it's time-bound.
 task = input("Enter your task: ").strip()
-priority = input("What is the priority of this task? (high/medium/low): ").strip().lower()
-time_bound = input("Is this task time-bound? (yes/no): ").strip().lower()
+priority = input("Priority (high/medium/low): ").strip().lower()
+time_bound = input("Is it time-bound? (yes/no): ").strip().lower()
 
-# Use a match-case statement to create the base reminder message.
+# Generate reminder using match-case for priority.
 match priority:
     case "high":
         reminder = f"High priority task, '{task}'"
@@ -21,5 +21,4 @@ if time_bound == "yes":
     reminder += " that requires immediate attention today!"
 
 # Display the final reminder.
-print("\n--- Daily Reminder ---")
-print(reminder)
+print(f"Reminder:{reminder}")
