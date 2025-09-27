@@ -1,31 +1,24 @@
-# A script that draws a text-based square pattern of asterisks.
-# Prompt the user for a task.
-task = input("What is the task for today? ")
+# daily_reminder.py
 
-# Prompt for priority (high, medium, low).
-priority = input("What is the priority of this task? (high/medium/low): ").lower()
+# Prompt user for a single task and details (exact wording expected)
+task = input("Enter your task: ").strip()
+priority = input("Priority (high/medium/low): ").strip().lower()
+time_bound = input("Is this task time-bound? (yes/no): ").strip().lower()
 
-# Prompt if the task is time-bound.
-time_bound = input("Is this task time-bound? (yes/no): ").lower()
-
-# Initialize the reminder message
-reminder = f"Reminder for your {priority} priority task: {task}."
-
-# Use a match-case statement to create the base reminder message.
+# Use a match-case statement for priority of the reminder message.
 match priority:
     case 'high':
-        reminder = f"Urgent Reminder: Your high priority task, '{task}', needs attention!"
+        reminder = f"High priority task, '{task}'"
     case 'medium':
-        reminder = f"Friendly Reminder: Your medium priority task, '{task}', is waiting for you."
+        reminder = f"Medium priority task, '{task}'"
     case 'low':
-        reminder = f"Note: Your low priority task, '{task}', can be done at your convenience."
+        reminder = f"low priority task, '{task}'"
     case _:
-        reminder = f"Reminder for your task: {task}."
+        reminder = f"Reminder for your task: '{task}'(priority not specified)"
 
-# Add the time-bound message if applicable.
+# check if the task is urgent.
 if time_bound == 'yes':
-    reminder += " ⚡ This task requires immediate attention today!"
+    reminder += "This task requires immediate attention today!"
 
-# Display the final reminder.
-print("\n--- Daily Reminder ---")
-print(reminder)
+# Print the final reminder.
+print(f"Reminder: {reminder}")
