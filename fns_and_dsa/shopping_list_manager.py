@@ -1,11 +1,13 @@
 def display_menu():
     """Prints the menu options for the shopping list manager."""
-    print("\n--- Shopping List Manager ---")
+    # This line has been added/modified to strictly match the required string
+    print("Shopping List Manager") 
+    print("---------------------") # Adding a separator for neatness
     print("1. Add Item")
     print("2. Remove Item")
     print("3. View List")
     print("4. Exit")
-    print("-----------------------------\n")
+    print("---------------------\n")
 
 def main():
     """
@@ -21,7 +23,7 @@ def main():
         # --- 1. Add Item ---
         if choice == '1':
             item_to_add = input("Enter the item to add: ").strip()
-            if item_to_add: # Check if input is not empty
+            if item_to_add: 
                 shopping_list.append(item_to_add)
                 print(f"'{item_to_add}' has been added to the list.")
             else:
@@ -31,7 +33,7 @@ def main():
         elif choice == '2':
             if not shopping_list:
                 print("The list is currently empty. Nothing to remove.")
-                continue # Go back to the menu
+                continue 
             
             item_to_remove = input("Enter the item to remove: ").strip()
             
