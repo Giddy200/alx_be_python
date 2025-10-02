@@ -1,67 +1,67 @@
-# shopping_list_manager.py
+def display_menu():
+    """Prints the menu options for the shopping list manager."""
+    print("\n--- Shopping List Manager ---")
+    print("1. Add Item")
+    print("2. Remove Item")
+    print("3. View List")
+    print("4. Exit")
+    print("-----------------------------\n")
 
 def main():
-    # Start with an empty list
+    """
+    Main function to run the shopping list manager loop.
+    Initializes the shopping list and handles user input for list operations.
+    """
     shopping_list = []
-
+    
     while True:
-        print("\n" + "="*30)
-        print("Shopping List Manager")
-        print("="*30)
-        print("1. Add item")
-        print("2. Remove item")
-        print("3. View list")
-        print("4. Exit")
-        print("="*30)
+        display_menu()
+        choice = input("Enter your choice: ")
 
-        # Get user input and strip whitespace
-        choice = input("Enter your choice (1-4): ").strip()
-
+        # --- 1. Add Item ---
         if choice == '1':
-            # --- Add Item ---
-            item = input("Enter the item to add: ").strip()
-            if item: # Ensure the item name isn't empty
-                shopping_list.append(item)
-                print(f"'{item}' has been added to the list.")
+            item_to_add = input("Enter the item to add: ").strip()
+            if item_to_add: # Check if input is not empty
+                shopping_list.append(item_to_add)
+                print(f"'{item_to_add}' has been added to the list.")
             else:
                 print("Item name cannot be empty.")
-
+        
+        # --- 2. Remove Item ---
         elif choice == '2':
-            # --- Remove Item ---
             if not shopping_list:
-                print(" The shopping list is already empty. Nothing to remove.")
-                continue
-
+                print("The list is currently empty. Nothing to remove.")
+                continue # Go back to the menu
+            
             item_to_remove = input("Enter the item to remove: ").strip()
-
-            if item_to_remove in shopping_list:
-                # Use list.remove() to remove the first occurrence of the item
+            
+            try:
+                # Attempt to find and remove the item
                 shopping_list.remove(item_to_remove)
                 print(f"'{item_to_remove}' has been removed from the list.")
-            else:
-                # Item not found
-                print(f" '{item_to_remove}' was not found in the list.")
+            except ValueError:
+                # Catches the error if the item is not found in the list
+                print(f"Error: '{item_to_remove}' was not found in the list.")
 
+        # --- 3. View List ---
         elif choice == '3':
-            # --- View List ---
-            print("\n--- Current Shopping List ---")
+            print("\n*** YOUR SHOPPING LIST ***")
             if shopping_list:
-                # Use enumerate to display items with a number
+                # Enumerate the list to display item numbers (1-based index)
                 for index, item in enumerate(shopping_list, 1):
                     print(f"{index}. {item}")
             else:
-                print("The list is empty! Time to go shopping. 🛍️")
-            print("---------------------------\n")
-
+                print("The list is empty. Time to go shopping!")
+            print("**************************")
+        
+        # --- 4. Exit ---
         elif choice == '4':
-            # --- Exit ---
-            print("Thank you for using the Shopping List Manager. Goodbye!")
-            break  # Exit the while loop
-
+            print("Thank you for using the Shopping List Manager. Goodbye! ")
+            break
+        
+        # --- Invalid Choice ---
         else:
-            # --- Invalid Choice ---
-            print("Invalid choice. Please enter a number between 1 and 4.")
+            print("Invalid choice. Please select an option from 1 to 4.")
 
-# Standard boilerplate to run the main function
 if __name__ == "__main__":
     main()
