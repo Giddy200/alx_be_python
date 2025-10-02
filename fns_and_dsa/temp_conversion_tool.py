@@ -1,7 +1,8 @@
 # --- Define Global Conversion Factors ---
-# Using floating-point division to ensure accurate results
-FAHRENHEIT_TO_CELSIUS_FACTOR = 5.0 / 9.0
-CELSIUS_TO_FAHRENHEIT_FACTOR = 9.0 / 5.0
+# FIX: Changed '5.0 / 9.0' to '5 / 9' and '9.0 / 5.0' to '9 / 5' 
+# to match the strict syntax requirement.
+FAHRENHEIT_TO_CELSIUS_FACTOR = 5 / 9
+CELSIUS_TO_FAHRENHEIT_FACTOR = 9 / 5
 
 def convert_to_celsius(fahrenheit):
     """
