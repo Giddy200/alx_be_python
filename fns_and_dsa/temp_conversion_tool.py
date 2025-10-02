@@ -1,8 +1,7 @@
-# --- Define Global Conversion Factors ---
-# FIX: Changed '5.0 / 9.0' to '5 / 9' and '9.0 / 5.0' to '9 / 5' 
-# to match the strict syntax requirement.
-FAHRENHEIT_TO_CELSIUS_FACTOR = 5 / 9
-CELSIUS_TO_FAHRENHEIT_FACTOR = 9 / 5
+# Objective: Illustrate variable scope using global conversion factors.
+
+FAHRENHEIT_TO_CELSIUS_FACTOR = 5/9
+CELSIUS_TO_FAHRENHEIT_FACTOR = 9/5
 
 def convert_to_celsius(fahrenheit):
     """
@@ -10,7 +9,7 @@ def convert_to_celsius(fahrenheit):
 
     The formula is: Celsius = (Fahrenheit - 32) * (5/9)
     """
-    # Accessing the global variable to perform the calculation
+    # Accessing the global variable (read-only access is implicit)
     celsius = (fahrenheit - 32) * FAHRENHEIT_TO_CELSIUS_FACTOR
     return celsius
 
@@ -20,7 +19,7 @@ def convert_to_fahrenheit(celsius):
 
     The formula is: Fahrenheit = (Celsius * 9/5) + 32
     """
-    # Accessing the global variable to perform the calculation
+    # Accessing the global variable (read-only access is implicit)
     fahrenheit = (celsius * CELSIUS_TO_FAHRENHEIT_FACTOR) + 32
     return fahrenheit
 
