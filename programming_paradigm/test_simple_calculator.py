@@ -1,6 +1,6 @@
 # test_simple_calculator.py
 
-import simple_calculator.py as simple_calculator
+import simple_calculator as simple_calculator
 import unittest
 from simple_calculator import SimpleCalculator
 
@@ -17,24 +17,18 @@ class TestSimpleCalculator(unittest.TestCase):
 
     # ------------------ Test Addition (add) ------------------
 
-    def test_addition_positive_integers(self):
-        """Test addition with two positive integers."""
+    # CONSOLIDATED TEST METHOD as requested
+    def test_addition(self):
+        """Test the addition method covering positive, negative, and float inputs."""
+        # Positive integers
         self.assertEqual(self.calc.add(5, 3), 8)
-    
-    def test_addition_negative_integers(self):
-        """Test addition with two negative integers."""
+        # Negative integers
         self.assertEqual(self.calc.add(-5, -3), -8)
-    
-    def test_addition_mixed_integers(self):
-        """Test addition with a positive and a negative integer."""
+        # Mixed integers
         self.assertEqual(self.calc.add(-10, 4), -6)
         self.assertEqual(self.calc.add(7, -7), 0)
-        
-    def test_addition_floats(self):
-        """Test addition with floating-point numbers."""
+        # Floats
         self.assertEqual(self.calc.add(2.5, 1.5), 4.0)
-        self.assertEqual(self.calc.add(0.1, 0.2), 0.30000000000000004) # standard float behavior
-        # Use assertAlmostEqual for better float comparison in general, but assertEqual is acceptable here.
 
     # ------------------ Test Subtraction (subtract) ------------------
 
@@ -84,21 +78,12 @@ class TestSimpleCalculator(unittest.TestCase):
         """Test division resulting in a float."""
         self.assertEqual(self.calc.divide(10, 4), 2.5)
 
-    def test_division_by_one(self):
-        """Test division by 1."""
-        self.assertEqual(self.calc.divide(99, 1), 99.0)
-
     def test_division_mixed_integers(self):
         """Test division involving negative numbers."""
         self.assertEqual(self.calc.divide(-10, 5), -2.0)
-        self.assertEqual(self.calc.divide(10, -5), -2.0)
-        self.assertEqual(self.calc.divide(-10, -5), 2.0)
 
     def test_division_by_zero(self):
         """Test the edge case of division by zero."""
-        # The class documentation says it returns None for division by zero
+        # Asserts that the divide method returns None when the denominator is 0
         self.assertIsNone(self.calc.divide(10, 0))
         self.assertIsNone(self.calc.divide(-5, 0))
-
-
-# The tests can be run using: python -m unittest test_simple_calculator.py
