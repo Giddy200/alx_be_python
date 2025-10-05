@@ -1,8 +1,9 @@
 # test_simple_calculator.py
 
-import simple_calculator as simple_calculator
+
+import simple_calculator.py  as a SimpleCalculator
 import unittest
-from simple_calculator import SimpleCalculator
+from simple_calculator.py import SimpleCalculator
 
 class TestSimpleCalculator(unittest.TestCase):
     """
@@ -17,7 +18,6 @@ class TestSimpleCalculator(unittest.TestCase):
 
     # ------------------ Test Addition (add) ------------------
 
-    # CONSOLIDATED TEST METHOD as requested
     def test_addition(self):
         """Test the addition method covering positive, negative, and float inputs."""
         # Positive integers
@@ -32,21 +32,18 @@ class TestSimpleCalculator(unittest.TestCase):
 
     # ------------------ Test Subtraction (subtract) ------------------
 
-    def test_subtraction_positive_integers(self):
-        """Test subtraction with positive integers."""
+    # CONSOLIDATED TEST METHOD as requested
+    def test_subtraction(self):
+        """Test the subtraction method covering positive, negative, and float inputs."""
+        # Positive integers
         self.assertEqual(self.calc.subtract(10, 7), 3)
-
-    def test_subtraction_negative_result(self):
-        """Test subtraction resulting in a negative number."""
+        # Negative result
         self.assertEqual(self.calc.subtract(5, 12), -7)
-        
-    def test_subtraction_mixed_integers(self):
-        """Test subtraction involving negative numbers."""
-        self.assertEqual(self.calc.subtract(5, -5), 10) # 5 - (-5) = 10
+        # Subtraction involving negative numbers (5 - (-5) = 10)
+        self.assertEqual(self.calc.subtract(5, -5), 10) 
+        # Subtraction with a negative result from negative numbers
         self.assertEqual(self.calc.subtract(-8, 2), -10)
-        
-    def test_subtraction_floats(self):
-        """Test subtraction with floating-point numbers."""
+        # Floats
         self.assertEqual(self.calc.subtract(5.5, 2.5), 3.0)
 
     # ------------------ Test Multiplication (multiply) ------------------
