@@ -42,7 +42,6 @@ class TestSimpleCalculator(unittest.TestCase):
 
     # ------------------ Test Multiplication (multiply) ------------------
 
-    # CONSOLIDATED TEST METHOD as requested
     def test_multiplication(self):
         """Test the multiplication method covering positive, negative, zero, and float inputs."""
         # Positive integers
@@ -57,20 +56,15 @@ class TestSimpleCalculator(unittest.TestCase):
 
     # ------------------ Test Division (divide) ------------------
 
-    def test_division_normal(self):
-        """Test normal division with positive inputs."""
+    def test_division(self):
+        """Test the division method covering normal operation, negative numbers, and division by zero."""
+        # Normal division with integer result
         self.assertEqual(self.calc.divide(10, 5), 2.0)
-        
-    def test_division_float_result(self):
-        """Test division resulting in a float."""
+        # Division resulting in a float
         self.assertEqual(self.calc.divide(10, 4), 2.5)
-
-    def test_division_mixed_integers(self):
-        """Test division involving negative numbers."""
+        # Division involving negative numbers
         self.assertEqual(self.calc.divide(-10, 5), -2.0)
-
-    def test_division_by_zero(self):
-        """Test the critical edge case of division by zero."""
+        # Critical edge case: division by zero
         # Asserts that the divide method correctly returns None when the denominator is 0
         self.assertIsNone(self.calc.divide(10, 0))
         self.assertIsNone(self.calc.divide(-5, 0))
