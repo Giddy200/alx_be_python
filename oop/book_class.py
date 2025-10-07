@@ -10,7 +10,7 @@ class Book:
         self.title = title
         self.author = author
         self.year = year
-        print(f"Book created: {self.title}") # Optional: Confirmation of creation
+        # REMOVED: print(f"Book created: {self.title}") 
 
     def __del__(self):
         """
@@ -32,8 +32,6 @@ class Book:
         the object.
         Format: f"Book('{self.title}', '{self.author}', {self.year})"
         """
-        # Note the use of quotes around string attributes (title and author)
-        # to ensure the output string is valid Python code.
         return f"Book('{self.title}', '{self.author}', {self.year})"
 
-# End of book_class.py
+# End of corrected book_class.py
