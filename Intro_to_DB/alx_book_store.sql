@@ -1,59 +1,47 @@
--- alx_book_store.sql
-
--- CREATE the database
-CREATE DATABASE IF NOT EXISTS alx_book_store;
+-- Create the database
+CREATE DATABASE IF NOT EXISTS ALX_BOOK_STORE;
 
 -- Use the newly created database
-USE alx_book_store;
+USE ALX_BOOK_STORE;
 
----
-
--- CREATE the Authors table
-CREATE TABLE Authors (
-    author_id INT PRIMARY KEY,
-    author_name VARCHAR(215) NOT NULL
+-- Table for Authors
+CREATE TABLE IF NOT EXISTS AUTHORS (
+    AUTHOR_ID INT PRIMARY KEY,
+    AUTHOR_NAME VARCHAR(215) NOT NULL
 );
 
----
-
--- CREATE the Books table
-CREATE TABLE Books (
-    book_id INT PRIMARY KEY,
-    title VARCHAR(130) NOT NULL,
-    author_id INT,
-    price DOUBLE NOT NULL,
-    publication_date DATE,
-    FOREIGN KEY (author_id) REFERENCES Authors(author_id)
+-- Table for Books
+CREATE TABLE IF NOT EXISTS BOOKS (
+    BOOK_ID INT PRIMARY KEY,
+    TITLE VARCHAR(130) NOT NULL,
+    AUTHOR_ID INT,
+    PRICE DOUBLE NOT NULL,
+    PUBLICATION_DATE DATE,
+    FOREIGN KEY (AUTHOR_ID) REFERENCES AUTHORS(AUTHOR_ID)
 );
 
----
-
--- CREATE the Customers table
-CREATE TABLE Customers (
-    customer_id INT PRIMARY KEY,
-    customer_name VARCHAR(215) NOT NULL,
-    email VARCHAR(215) NOT NULL UNIQUE,
-    address TEXT
+-- Table for Customers
+CREATE TABLE IF NOT EXISTS CUSTOMERS (
+    CUSTOMER_ID INT PRIMARY KEY,
+    CUSTOMER_NAME VARCHAR(215) NOT NULL,
+    EMAIL VARCHAR(215) UNIQUE NOT NULL, -- Email should typically be unique
+    ADDRESS TEXT
 );
 
----
-
--- CREATE the Orders table
-CREATE TABLE Orders (
-    order_id INT PRIMARY KEY,
-    customer_id INT,
-    order_date DATE NOT NULL,
-    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
+-- Table for Orders
+CREATE TABLE IF NOT EXISTS ORDERS (
+    ORDER_ID INT PRIMARY KEY,
+    CUSTOMER_ID INT,
+    ORDER_DATE DATE NOT NULL,
+    FOREIGN KEY (CUSTOMER_ID) REFERENCES CUSTOMERS(CUSTOMER_ID)
 );
 
----
-
--- CREATE the Order_Details table (the junction table for orders and books)
-CREATE TABLE Order_Details (
-    orderdetailid INT PRIMARY KEY,
-    order_id INT,
-    book_id INT,
-    quantity DOUBLE NOT NULL,
-    FOREIGN KEY (order_id) REFERENCES Orders(order_id),
-    FOREIGN KEY (book_id) REFERENCES Books(book_id)
+-- Table for Order Details (Junction table between Orders and Books)
+CREATE TABLE IF NOT EXISTS ORDER_DETAILS (
+    ORDERDETAILID INT PRIMARY KEY,
+    ORDER_ID INT,
+    BOOK_ID INT,
+    QUANTITY DOUBLE NOT NULL,
+    FOREIGN KEY (ORDER_ID) REFERENCES ORDERS(ORDER_ID),
+    FOREIGN KEY (BOOK_ID) REFERENCES BOOKS(BOOK_ID)
 );
